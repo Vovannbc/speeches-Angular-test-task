@@ -1,13 +1,16 @@
 <div class="row">
 	<div class="col-sm-4">
-		<ul class="list-group">
-			<li class="list-group-item"
-					*ngFor="let speech of speeches"
-			><a [routerLink]="['/speech', speech.id]">
-				Speech {{ speech.id }} </a>
-				<span *ngIf="routerLinkActive" class="arrow"></span>
-			</li>
-		</ul>
+		<div class="content">
+			<ul class="list-group">
+				<li class="list-group-item"
+						*ngFor="let speech of speeches"
+						routerLinkActive="active"
+				><a [routerLink]="['/speech', speech.id]">
+					Speech {{ speech.id }}
+				</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<div class="col-sm-8">
 		<router-outlet></router-outlet>

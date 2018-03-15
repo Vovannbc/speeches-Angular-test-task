@@ -7,11 +7,12 @@ import { MySpeechesPageComponent } from './my-speeches-page/my-speeches-page.com
 import { NewSpeechPageComponent } from './new-speech-page/new-speech-page.component';
 import { AllSpeechesPageComponent } from './all-speeches-page/all-speeches-page.component';
 import { SpeechService } from './speech.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import { SpeechPageComponent } from './speech-page/speech-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		AppRoutingModule
+		AppRoutingModule,
+		CommonModule,
+		ReactiveFormsModule
 	],
 	providers: [SpeechService],
 	bootstrap: [AppComponent]

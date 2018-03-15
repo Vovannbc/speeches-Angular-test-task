@@ -1,3 +1,28 @@
-<p>
-  speech-page works! {{id}}
-</p>
+<div class="content">
+	<p>This content from speech {{ id }}</p>
+	<p>{{ speechContent }}</p>
+</div>
+<hr>
+<div class="content">
+	<form [formGroup]="speechForm">
+		<div class="row">
+			<div class="col">
+				<input type="text" class="form-control" formControlName="author">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" formControlName="keywords">
+			</div>
+			<div class="col">
+				<input type="date" class="form-control" formControlName="date" >
+			</div>
+		</div>
+		<hr>
+		<div class="row justify-content-end">
+			<div class="col-4">
+				<button class="btn btn-danger" (click)="deleteSpeech(id)">Delete</button>
+				<button class="btn btn-success" (click)="updateSpeech()">Save</button>
+				<button class="btn btn-info" (click)="shareSpeech()">Share</button>
+			</div>
+		</div>
+	</form>
+</div>

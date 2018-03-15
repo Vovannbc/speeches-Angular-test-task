@@ -1,3 +1,9 @@
-span.arrow:before {
+li.active a:after {
 	content: '›';
+	position: absolute;
+	right: 0;
+	width: 20px;
+}
+li.active a {
+	color: white;
 }

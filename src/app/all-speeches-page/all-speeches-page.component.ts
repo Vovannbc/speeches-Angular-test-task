@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SpeechService} from '../speech.service';
 
 @Component({
-  selector: 'app-all-speeches-page',
-  templateUrl: './all-speeches-page.component.html',
-  styleUrls: ['./all-speeches-page.component.css']
+	selector: 'app-all-speeches-page',
+	templateUrl: './all-speeches-page.component.html',
+	styleUrls: ['./all-speeches-page.component.css']
 })
 export class AllSpeechesPageComponent implements OnInit {
 
-  constructor() { }
+	speeches: any;
 
-  ngOnInit() {
-  }
+	constructor(private speechService: SpeechService) {
+	}
 
+	ngOnInit() {
+		this.speeches = this.speechService.speeches;
+	}
 }

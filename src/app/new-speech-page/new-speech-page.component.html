@@ -1,3 +1,30 @@
-<p>
-  new-speech-page works!
-</p>
+<div class="container">
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label>Speech Content</label>
+			<input type="text"
+						 class="form-control"
+						 ngModel
+						 formControlName="speechContent">
+		</div>
+		<div class="form-group">
+			<label>Speech Author</label>
+			<input type="text"
+						 class="form-control"
+						 ngModel
+						 formControlName="speechAuthor">
+		</div>
+		<div class="form-group">
+			<label>Speech Content</label>
+			<input type="date"
+						 class="form-control"
+						 ngModel
+						 formControlName="speechDate">
+		</div>
+		<button class="btn btn-light" type="submit">Create Speech</button>
+	</form>
+</div>
+<hr>
+<ul>
+	<li *ngFor="let speech of speeches">Speech {{speech.id}}</li>
+</ul>
