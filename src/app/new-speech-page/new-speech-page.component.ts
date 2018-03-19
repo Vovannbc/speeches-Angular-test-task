@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SpeechModel} from '../speech.model';
+import {SpeechService} from '../speech.service';
 
 @Component({
 	selector: 'app-new-speech-page',
@@ -10,11 +11,12 @@ import {SpeechModel} from '../speech.model';
 export class NewSpeechPageComponent implements OnInit {
 
 	form: FormGroup;
-	speeches: SpeechModel[];
+	speeches: SpeechModel[] = [];
 
-	constructor() {}
+	constructor(private speechService: SpeechService) {}
 
 	ngOnInit() {
+		this.speeches = this.speechService.speeches;
 
 		this.form = new FormGroup({
 			speechContent: new FormControl('', Validators.required),

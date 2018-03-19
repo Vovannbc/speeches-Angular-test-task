@@ -13,6 +13,8 @@ import {AppRoutingModule} from './app-routing.module';
 import { SpeechPageComponent } from './speech-page/speech-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {CommonModule} from '@angular/common';
+import {MaterialModule} from './material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -29,7 +31,9 @@ import {CommonModule} from '@angular/common';
 		HttpModule,
 		AppRoutingModule,
 		CommonModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		MaterialModule,
+		BrowserAnimationsModule
 	],
 	providers: [SpeechService],
 	bootstrap: [AppComponent]
