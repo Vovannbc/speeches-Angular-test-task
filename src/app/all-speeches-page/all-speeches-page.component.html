@@ -1,7 +1,7 @@
-<p>
-  all-speeches-page works!
-</p>
-<input type="text" class="form-control">
-<ul>
-	<li *ngFor="let speech of speeches">Speech {{ speech.id }} <span> Author - {{speech.author}}</span></li>
+<input type="text" class="form-control" placeholder="Search speech">
+<ul class="list-group">
+	<li class="list-group-item"
+		*ngFor="let speech of speeches">Speech {{ speech.id }}
+		<span> Author - {{speech.author}}</span>
+	</li>
 </ul>
