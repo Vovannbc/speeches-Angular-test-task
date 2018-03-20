@@ -16,4 +16,6 @@ export class AllSpeechesPageComponent implements OnInit {
 	ngOnInit() {
 		this.speeches = this.speechService.speeches;
 	}
+
+
 }

@@ -1,40 +1,41 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
+import {SpeechModel} from './speech.model';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SpeechService {
 
 	constructor() { }
 
-	speeches = [
-		{
-			id: 1,
-			content: 'Speech content 1',
-			keywords: ['one word', 'two word'],
-			author: 'Someone1',
-			date: ''
-		},
-		{
-			id: 2,
-			content: 'Speech content 2',
-			keywords: ['two word', 'three word'],
-			author: 'Someone2',
-			date: ''
-		},
-		{
-			id: 3,
-			content: 'Speech content 3',
-			keywords: ['three word', 'four word'],
-			author: 'Someone3',
-			date: ''
-		}
-	];
+	speeches: SpeechModel[] = [];
 
-	getSpeach(id) {
-		return this.speeches[id - 1];
+	getSpeeches(): Observable<any> {
+		return (this.speeches = JSON.parse(localStorage.getItem('speeches'))).asObservable();
 	}
 
-	updateSpeech(speech) {
-
+	getSpeach(id: number): Observable<any> {
+		// console.log(JSON.parse(localStorage.getItem('speeches')));
+		return (JSON.parse(localStorage.getItem('speeches')).filter(obj => obj.id == id)[0]).asObservable();
 	}
 
+	deleteSpeech(id: number) {
+		this.speeches.splice(id - 1 , 1);
+		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		return this.getSpeeches;
+	}
+
+	addSpeech(speech: SpeechModel) {
+		this.speeches.push(speech);
+		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		return this.getSpeeches;
+	}
+
+	updateSpeech(speech: SpeechModel) {
+		console.log(speech);
+		// this.speeches.find(s => s.id === speech.id) = speech;
+		// console.log(this.speeches.filter(s => s.id == speech.id)[0]);
+		// console.log(this.speeches);
+		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		return this.getSpeeches;
+	}
 }

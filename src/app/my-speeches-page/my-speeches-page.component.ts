@@ -14,7 +14,7 @@ export class MySpeechesPageComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.speeches = this.speechService.speeches;
+		this.speechService.getSpeeches().subscribe(s => this.speeches = s);
 	}
 
 }

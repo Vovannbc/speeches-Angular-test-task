@@ -16,7 +16,7 @@ export class NewSpeechPageComponent implements OnInit {
 	constructor(private speechService: SpeechService) {}
 
 	ngOnInit() {
-		this.speeches = this.speechService.speeches;
+		this.speeches = this.speechService.getSpeeches();
 
 		this.form = new FormGroup({
 			speechContent: new FormControl('', Validators.required),
@@ -27,7 +27,14 @@ export class NewSpeechPageComponent implements OnInit {
 
 	onSubmit() {
 		console.log('submited', this.form);
-		this.speeches.push({
+		// this.speechService.speeches.push({
+		// 	id: this.speeches.length + 1,
+		// 	content: this.form.controls.speechContent.value,
+		// 	keywords: ['one word', 'two word'],
+		// 	author: this.form.controls.speechAuthor.value,
+		// 	date: ''
+		// });
+		this.speechService.addSpeech({
 			id: this.speeches.length + 1,
 			content: this.form.controls.speechContent.value,
 			keywords: ['one word', 'two word'],

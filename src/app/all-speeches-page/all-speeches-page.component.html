@@ -1,7 +1,14 @@
-<input type="text" class="form-control" placeholder="Search speech">
+<input type="text"
+			 class="form-control"
+			 placeholder="Search speech"
+			 ngModel
+			 #search
+			 (keyup)="0"
+>
+<hr>
 <ul class="list-group">
 	<li class="list-group-item"
-		*ngFor="let speech of speeches">Speech {{ speech.id }}
+		*ngFor="let speech of ( speeches | searchFilter: search.value )">Speech {{ speech.id }}
 		<span> Author - {{speech.author}}</span>
 	</li>
 </ul>

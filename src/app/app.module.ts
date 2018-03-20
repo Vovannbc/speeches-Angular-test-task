@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {CommonModule} from '@angular/common';
 import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SearchFilter} from './all-speeches-page/searchFilter.pipe';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 		NewSpeechPageComponent,
 		AllSpeechesPageComponent,
 		SpeechPageComponent,
-		NotFoundComponent
+		NotFoundComponent,
+		SearchFilter
 	],
 	imports: [
 		BrowserModule,
