@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SpeechService} from '../speech.service';
+import {SpeechModel} from '../speech.model';
 
 @Component({
 	selector: 'app-my-speeches-page',
@@ -8,13 +9,14 @@ import {SpeechService} from '../speech.service';
 })
 export class MySpeechesPageComponent implements OnInit {
 
-	speeches = [];
+	speeches: SpeechModel[] = [];
 
 	constructor(private speechService: SpeechService) {
 	}
 
 	ngOnInit() {
-		this.speechService.getSpeeches().subscribe(s => this.speeches = s);
+		this.speeches = this.speechService.getSpeeches();
+		console.log(this.speeches);
 	}
 
 }

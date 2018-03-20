@@ -23,9 +23,6 @@ export class SpeechPageComponent implements OnInit {
 		this.route.params.subscribe((params: Params) => {
 			this.id = +params['id'];
 			this.speech = this.speechService.getSpeach(this.id);
-			// this.speechService.getSpeach(this.id).subscribe(s => this.speech = s);
-			console.dir(this.speech);
-
 			this.speechForm = new FormGroup({
 				speechContent: new FormControl(this.speech.content),
 				author: new FormControl(this.speech.author),
@@ -46,7 +43,7 @@ export class SpeechPageComponent implements OnInit {
 		const content = form.controls.speechContent.value;
 		const author = form.controls.author.value;
 		const date = form.controls.date.value;
-		console.log(form);
+		// console.log(form);
 		this.speechService.updateSpeech({
 			id: this.speech.id,
 			content: content,
@@ -54,6 +51,7 @@ export class SpeechPageComponent implements OnInit {
 			date: date,
 			keywords: ['one word', 'two word']
 		});
+		alert(`Speech ${this.id} updated!`);
 	}
 
 	shareSpeech() {

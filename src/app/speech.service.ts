@@ -1,6 +1,5 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {SpeechModel} from './speech.model';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SpeechService {
@@ -9,33 +8,38 @@ export class SpeechService {
 
 	speeches: SpeechModel[] = [];
 
-	getSpeeches(): Observable<any> {
-		return (this.speeches = JSON.parse(localStorage.getItem('speeches'))).asObservable();
+	saveToStorage(): void {
+		localStorage.setItem('speeches', JSON.stringify(this.speeches));
 	}
 
-	getSpeach(id: number): Observable<any> {
-		// console.log(JSON.parse(localStorage.getItem('speeches')));
-		return (JSON.parse(localStorage.getItem('speeches')).filter(obj => obj.id == id)[0]).asObservable();
+	getFromStorage(): SpeechModel[] {
+		return JSON.parse(localStorage.getItem('speeches'));
+	}
+
+	getSpeeches(): SpeechModel[] {
+		return this.speeches = this.getFromStorage();
+	}
+
+	getSpeach(id: number) {
+		return this.getFromStorage().filter(obj => obj.id == id)[0];
 	}
 
 	deleteSpeech(id: number) {
 		this.speeches.splice(id - 1 , 1);
-		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		this.saveToStorage();
 		return this.getSpeeches;
 	}
 
 	addSpeech(speech: SpeechModel) {
 		this.speeches.push(speech);
-		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		this.saveToStorage();
 		return this.getSpeeches;
 	}
 
 	updateSpeech(speech: SpeechModel) {
-		console.log(speech);
-		// this.speeches.find(s => s.id === speech.id) = speech;
-		// console.log(this.speeches.filter(s => s.id == speech.id)[0]);
-		// console.log(this.speeches);
-		localStorage.setItem('speeches', JSON.stringify(this.speeches));
+		const i = this.speeches.indexOf(this.speeches.find(s => speech.id === s.id));
+		this.speeches.splice(i, 1, speech);
+		this.saveToStorage();
 		return this.getSpeeches;
 	}
 }

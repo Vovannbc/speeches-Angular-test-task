@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SpeechService} from '../speech.service';
+import {SpeechModel} from '../speech.model';
 
 @Component({
 	selector: 'app-all-speeches-page',
@@ -7,8 +8,8 @@ import {SpeechService} from '../speech.service';
 	styleUrls: ['./all-speeches-page.component.css']
 })
 export class AllSpeechesPageComponent implements OnInit {
-
-	speeches: any;
+	@Input('speeches') speeches: SpeechModel[];
+	// speeches: SpeechModel[] = [];
 
 	constructor(private speechService: SpeechService) {
 	}
@@ -17,5 +18,7 @@ export class AllSpeechesPageComponent implements OnInit {
 		this.speeches = this.speechService.speeches;
 	}
 
-
+	// receiveSubmited() {
+	// 	this.speeches = this.speechService.speeches;
+	// }
 }

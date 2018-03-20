@@ -39,7 +39,9 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-			localStorage.setItem('speeches', JSON.stringify(this.speechesArr));
+			if (!localStorage.getItem('speeches')) {
+				localStorage.setItem('speeches', JSON.stringify(this.speechesArr));
+			}
 			this.speeches = this.speechService.getSpeeches();
 	}
 
