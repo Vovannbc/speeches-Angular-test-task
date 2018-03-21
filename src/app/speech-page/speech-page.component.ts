@@ -26,8 +26,8 @@ export class SpeechPageComponent implements OnInit {
 			this.speechForm = new FormGroup({
 				speechContent: new FormControl(this.speech.content),
 				author: new FormControl(this.speech.author),
-				keywords: new FormControl(),
-				date: new FormControl()
+				keywords: new FormControl(this.speech.keywords),
+				date: new FormControl(this.speech.date)
 			});
 		});
 	}
@@ -42,6 +42,7 @@ export class SpeechPageComponent implements OnInit {
 	updateSpeech(form) {
 		const content = form.controls.speechContent.value;
 		const author = form.controls.author.value;
+		const keywords = form.controls.keywords.value;
 		const date = form.controls.date.value;
 		// console.log(form);
 		this.speechService.updateSpeech({
@@ -49,7 +50,7 @@ export class SpeechPageComponent implements OnInit {
 			content: content,
 			author: author,
 			date: date,
-			keywords: ['one word', 'two word']
+			keywords: keywords
 		});
 		alert(`Speech ${this.id} updated!`);
 	}

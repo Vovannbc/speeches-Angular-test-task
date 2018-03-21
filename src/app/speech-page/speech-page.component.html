@@ -1,12 +1,13 @@
 <form [formGroup]="speechForm">
 	<mat-card>
+		<p>Here you cat edit your speeches</p>
 		<p>This content from speech {{ id }}</p>
-		<mat-form-field>
+		<div class="form-group">
 			<input type="text"
-						 matInput
+						 class="form-control"
 						 formControlName="speechContent"
 						 value="speechContent">
-		</mat-form-field>
+		</div>
 		<hr>
 		<p *ngIf="speech.keywords">keywords - {{ speech.keywords }}</p>
 	</mat-card>
@@ -21,7 +22,7 @@
 				<input type="text" class="form-control" formControlName="keywords">
 			</div>
 			<div class="col">
-				<input type="date" class="form-control" formControlName="date" >
+				<input type="date" class="form-control" formControlName="date">
 			</div>
 		</div>
 		<hr>
